@@ -125,7 +125,7 @@
 				"typeProperties": {
 					"schema": "dbo",
 					"table": {
-						"value": "@dataset().tableName",
+						"value": "@dataset().tablename",
 						"type": "Expression"
 					}
 				}
@@ -154,7 +154,7 @@
 					"location": {
 						"type": "AzureBlobStorageLocation",
 						"fileName": {
-							"value": "@dataset.filename",
+							"value": "@dataset().filename",
 							"type": "Expression"
 						},
 						"container": "data"
