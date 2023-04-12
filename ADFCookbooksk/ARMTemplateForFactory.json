@@ -230,7 +230,7 @@
 								"referenceName": "AzureSqlTables",
 								"type": "DatasetReference",
 								"parameters": {
-									"tablename": "Country"
+									"tablename": "country"
 								}
 							}
 						]
@@ -387,12 +387,12 @@
 									"type": "String"
 								},
 								"Status": {
-									"value": "failure",
+									"value": "Failure",
 									"type": "String"
 								},
 								"UpdatedAt": {
 									"value": {
-										"value": "utcNow()",
+										"value": "@utcNow()",
 										"type": "Expression"
 									},
 									"type": "DateTime"
