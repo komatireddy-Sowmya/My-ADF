@@ -62,7 +62,7 @@
 						"referenceName": "AzureSqlTables",
 						"type": "DatasetReference",
 						"parameters": {
-							"tablename": "Country"
+							"tablename": "country"
 						}
 					}
 				]
@@ -151,11 +151,17 @@
 					"storedProcedureName": "[dbo].[InsertPipelineLog]",
 					"storedProcedureParameters": {
 						"PipelineID": {
-							"value": "@pipeline().Pipeline",
+							"value": {
+								"value": "@pipeline().Pipeline",
+								"type": "Expression"
+							},
 							"type": "String"
 						},
 						"RunID": {
-							"value": "@pipeline().RunId",
+							"value": {
+								"value": "@pipeline().RunId",
+								"type": "Expression"
+							},
 							"type": "String"
 						},
 						"Status": {
@@ -213,12 +219,12 @@
 							"type": "String"
 						},
 						"Status": {
-							"value": "failure",
+							"value": "Failure",
 							"type": "String"
 						},
 						"UpdatedAt": {
 							"value": {
-								"value": "utcNow()",
+								"value": "@utcNow()",
 								"type": "Expression"
 							},
 							"type": "DateTime"
