@@ -70,7 +70,7 @@
 								"referenceName": "csvdata",
 								"type": "DatasetReference",
 								"parameters": {
-									"filename": "countries.csv"
+									"filename": "airlines.csv"
 								}
 							}
 						],
@@ -79,7 +79,7 @@
 								"referenceName": "AzureSqlTables",
 								"type": "DatasetReference",
 								"parameters": {
-									"tablename": "country"
+									"tablename": "Airline"
 								}
 							}
 						]
