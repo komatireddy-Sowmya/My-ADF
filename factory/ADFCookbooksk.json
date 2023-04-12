@@ -1,0 +1,9 @@
+{
+	"name": "ADFCookbooksk",
+	"location": "eastus",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "c0e7e403-02f6-419a-8cfc-70ef199357e4",
+		"tenantId": "84f1e4ea-8554-43e1-8709-f0b8589ea118"
+	}
+}
