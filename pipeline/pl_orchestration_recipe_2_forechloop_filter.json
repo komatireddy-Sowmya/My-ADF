@@ -15,10 +15,14 @@
 				},
 				"userProperties": [],
 				"typeProperties": {
+					"dataset": {
+						"referenceName": "csvdatafolder",
+						"type": "DatasetReference"
+					},
 					"fieldList": [
+						"childItems",
 						"itemName",
-						"lastModified",
-						"childItems"
+						"lastModified"
 					],
 					"storeSettings": {
 						"type": "AzureBlobStorageReadSettings",
@@ -84,6 +88,16 @@
 							},
 							"userProperties": [],
 							"typeProperties": {
+								"dataset": {
+									"referenceName": "csvdata",
+									"type": "DatasetReference",
+									"parameters": {
+										"filename": {
+											"value": "@item().name",
+											"type": "Expression"
+										}
+									}
+								},
 								"fieldList": [
 									"itemName",
 									"lastModified"
