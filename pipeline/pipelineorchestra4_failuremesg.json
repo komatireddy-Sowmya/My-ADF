@@ -86,9 +86,15 @@
 						"partitionOption": "None"
 					},
 					"sink": {
-						"type": "AzureSqlSink",
-						"writeBehavior": "insert",
-						"sqlWriterUseTableLock": false
+						"type": "DelimitedTextSink",
+						"storeSettings": {
+							"type": "AzureBlobStorageWriteSettings"
+						},
+						"formatSettings": {
+							"type": "DelimitedTextWriteSettings",
+							"quoteAllText": true,
+							"fileExtension": ".txt"
+						}
 					},
 					"enableStaging": false,
 					"translator": {
@@ -114,10 +120,10 @@
 				],
 				"outputs": [
 					{
-						"referenceName": "AzureSqlTables",
+						"referenceName": "csvdata",
 						"type": "DatasetReference",
 						"parameters": {
-							"tablename": {
+							"filename": {
 								"value": " @concat('Airlines-', utcNow(), '.backup')",
 								"type": "Expression"
 							}
