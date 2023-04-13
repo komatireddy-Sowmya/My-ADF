@@ -38,34 +38,8 @@
 						"writeBehavior": "insert",
 						"sqlWriterUseTableLock": false
 					},
-					"enableStaging": false,
-					"translator": {
-						"type": "TabularTranslator",
-						"typeConversion": true,
-						"typeConversionSettings": {
-							"allowDataTruncation": true,
-							"treatBooleanAsNumber": false
-						}
-					}
-				},
-				"inputs": [
-					{
-						"referenceName": "csvdata",
-						"type": "DatasetReference",
-						"parameters": {
-							"filename": "countries.csv"
-						}
-					}
-				],
-				"outputs": [
-					{
-						"referenceName": "AzureSqlTables",
-						"type": "DatasetReference",
-						"parameters": {
-							"tablename": "Country"
-						}
-					}
-				]
+					"enableStaging": false
+				}
 			},
 			{
 				"name": "backup copy activity",
@@ -96,37 +70,8 @@
 							"fileExtension": ".txt"
 						}
 					},
-					"enableStaging": false,
-					"translator": {
-						"type": "TabularTranslator",
-						"typeConversion": true,
-						"typeConversionSettings": {
-							"allowDataTruncation": true,
-							"treatBooleanAsNumber": false
-						}
-					}
-				},
-				"inputs": [
-					{
-						"referenceName": "AzureSqlTables",
-						"type": "DatasetReference",
-						"parameters": {
-							"tablename": "Country"
-						}
-					}
-				],
-				"outputs": [
-					{
-						"referenceName": "csvdata",
-						"type": "DatasetReference",
-						"parameters": {
-							"filename": {
-								"value": "@concat('Countries-', utcnow(), '.backup')",
-								"type": "Expression"
-							}
-						}
-					}
-				]
+					"enableStaging": false
+				}
 			}
 		],
 		"annotations": []

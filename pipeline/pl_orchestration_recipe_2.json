@@ -15,16 +15,13 @@
 				},
 				"userProperties": [],
 				"typeProperties": {
-					"dataset": {
-						"referenceName": "csvdatafolder",
-						"type": "DatasetReference"
-					},
 					"fieldList": [
 						"itemName",
 						"lastModified"
 					],
 					"storeSettings": {
 						"type": "AzureBlobStorageReadSettings",
+						"recursive": true,
 						"enablePartitionDiscovery": false
 					},
 					"formatSettings": {
