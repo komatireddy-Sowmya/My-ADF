@@ -38,8 +38,34 @@
 						"writeBehavior": "insert",
 						"sqlWriterUseTableLock": false
 					},
-					"enableStaging": false
-				}
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "csvdata",
+						"type": "DatasetReference",
+						"parameters": {
+							"filename": "countries.csv"
+						}
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "AzureSqlTables",
+						"type": "DatasetReference",
+						"parameters": {
+							"tablename": "country"
+						}
+					}
+				]
 			},
 			{
 				"name": "backup copy activity",
@@ -60,18 +86,44 @@
 						"partitionOption": "None"
 					},
 					"sink": {
-						"type": "DelimitedTextSink",
-						"storeSettings": {
-							"type": "AzureBlobStorageWriteSettings"
-						},
-						"formatSettings": {
-							"type": "DelimitedTextWriteSettings",
-							"quoteAllText": true,
-							"fileExtension": ".txt"
-						}
+						"type": "AzureSqlSink",
+						"writeBehavior": "insert",
+						"sqlWriterUseTableLock": false
 					},
-					"enableStaging": false
-				}
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "AzureSqlTables",
+						"type": "DatasetReference",
+						"parameters": {
+							"tablename": {
+								"value": "Country",
+								"type": "Expression"
+							}
+						}
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "AzureSqlTables",
+						"type": "DatasetReference",
+						"parameters": {
+							"tablename": {
+								"value": " @concat('Airlines-', utcNow(), '.backup')",
+								"type": "Expression"
+							}
+						}
+					}
+				]
 			},
 			{
 				"name": "on success",
