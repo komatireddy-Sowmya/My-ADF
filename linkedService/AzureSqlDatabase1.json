@@ -6,7 +6,7 @@
 		"type": "AzureSqlDatabase",
 		"typeProperties": {
 			"connectionString": "integrated security=False;encrypt=True;connection timeout=30;data source=airtransport.database.windows.net;initial catalog=AzureSQLDatabase;user id=sweet1433",
-			"encryptedCredential": "ew0KICAiVmVyc2lvbiI6ICIyMDE3LTExLTMwIiwNCiAgIlByb3RlY3Rpb25Nb2RlIjogIktleSIsDQogICJTZWNyZXRDb250ZW50VHlwZSI6ICJQbGFpbnRleHQiLA0KICAiQ3JlZGVudGlhbElkIjogIkRBVEFGQUNUT1JZQDcwOTFCOTcxLUUzNDAtNDAyNi04OTZCLTBFQkY1NThFNTNCQ18xZGVlYzM1OS01MzcxLTQ3MDYtYTUwOS00M2E3N2FmZDMxYTIiDQp9"
+			"encryptedCredential": "ew0KICAiVmVyc2lvbiI6ICIyMDE3LTExLTMwIiwNCiAgIlByb3RlY3Rpb25Nb2RlIjogIktleSIsDQogICJTZWNyZXRDb250ZW50VHlwZSI6ICJQbGFpbnRleHQiLA0KICAiQ3JlZGVudGlhbElkIjogIkRBVEFGQUNUT1JZQDAxOEY2RDlFLTA3QjUtNEExQi1BRjNDLTIyRjdDRUYwMTQ2N18yMDg3ZTE3NC1iMTM2LTRkODEtODIwMy1lNzY3YWYwNzFlM2MiDQp9"
 		}
 	}
 }
