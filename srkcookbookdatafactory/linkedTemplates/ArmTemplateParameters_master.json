@@ -11,6 +11,9 @@
 		"orchestrationAzureBlobStorage1_connectionString": {
 			"value": ""
 		},
+		"trigger_blob_added_properties_typeProperties_scope": {
+			"value": "/subscriptions/2213e8b1-dbc7-4d54-8aff-b5e315df5e5b/resourceGroups/1-470da0c6-playground-sandbox/providers/Microsoft.Storage/storageAccounts/adfcookbookstoragesk"
+		},
 		"containerUri": {
 			"value": ""
 		},
