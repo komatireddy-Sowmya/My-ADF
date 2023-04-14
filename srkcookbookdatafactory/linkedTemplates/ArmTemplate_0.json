@@ -1177,7 +1177,7 @@
 											"referenceName": "csvdata",
 											"type": "DatasetReference",
 											"parameters": {
-												"filename": "@item.name"
+												"filename": "@item().name"
 											}
 										}
 									],
