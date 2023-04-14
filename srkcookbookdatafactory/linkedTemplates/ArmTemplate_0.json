@@ -332,7 +332,7 @@
 								"referenceName": "csvdata",
 								"type": "DatasetReference",
 								"parameters": {
-									"filename": "countries.csv"
+									"filename": "airlines.csv"
 								}
 							}
 						],
@@ -341,7 +341,7 @@
 								"referenceName": "AzureSqlTables",
 								"type": "DatasetReference",
 								"parameters": {
-									"tablename": "country"
+									"tablename": "Airline"
 								}
 							}
 						]
@@ -390,7 +390,7 @@
 								"referenceName": "AzureSqlTables",
 								"type": "DatasetReference",
 								"parameters": {
-									"tablename": "Country"
+									"tablename": "Airline"
 								}
 							}
 						],
@@ -400,7 +400,7 @@
 								"type": "DatasetReference",
 								"parameters": {
 									"filename": {
-										"value": "@concat('countries-', utcNow(), '.backup')",
+										"value": "@concat('airlines-', utcNow(), '.backup')",
 										"type": "Expression"
 									}
 								}
