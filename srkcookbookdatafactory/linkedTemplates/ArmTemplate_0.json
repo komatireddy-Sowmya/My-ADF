@@ -926,6 +926,95 @@
 				"[concat(variables('factoryId'), '/datasets/csvdata')]",
 				"[concat(variables('factoryId'), '/linkedServices/AzureSqlDatabase1')]"
 			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/pl_orchestration_recipe_5_child')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"activities": [
+					{
+						"name": "Get Email Recipients",
+						"type": "Lookup",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"source": {
+								"type": "AzureSqlSource",
+								"sqlReaderQuery": "SELECT * FROM EmailRecipient",
+								"queryTimeout": "02:00:00",
+								"partitionOption": "None"
+							},
+							"dataset": {
+								"referenceName": "AzureSqlTables",
+								"type": "DatasetReference",
+								"parameters": {
+									"tablename": "EmailRecipients"
+								}
+							},
+							"firstRowOnly": false
+						}
+					},
+					{
+						"name": "ForEach1",
+						"type": "ForEach",
+						"dependsOn": [
+							{
+								"activity": "Get Email Recipients",
+								"dependencyConditions": [
+									"Completed"
+								]
+							}
+						],
+						"userProperties": [],
+						"typeProperties": {
+							"items": {
+								"value": "@activity('Get Email Recipients').output.value",
+								"type": "Expression"
+							},
+							"activities": [
+								{
+									"name": "send Email",
+									"type": "WebActivity",
+									"dependsOn": [],
+									"policy": {
+										"timeout": "0.12:00:00",
+										"retry": 0,
+										"retryIntervalInSeconds": 30,
+										"secureOutput": false,
+										"secureInput": false
+									},
+									"userProperties": [],
+									"typeProperties": {
+										"url": "https://prod-51.eastus.logic.azure.com:443/workflows/1638aebbbe4344cd8d9b06c4b794abf1/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=SGRM80lZP1qGW0LRA45JG5S7Aaj9t4iY7gVKU7vUrRU",
+										"method": "POST",
+										"headers": {},
+										"body": {
+											"value": "@json(concat('{\"emailAddress\": \"',item().emailAddress,'\",\n\"subject\":\"ADF Pipeline Failure\", \"messageBody\":\"ADF Pipeline Failed\"}'))",
+											"type": "Expression"
+										}
+									}
+								}
+							]
+						}
+					}
+				],
+				"policy": {
+					"elapsedTimeMetric": {},
+					"cancelAfter": {}
+				},
+				"annotations": []
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/datasets/AzureSqlTables')]"
+			]
 		}
 	]
 }
