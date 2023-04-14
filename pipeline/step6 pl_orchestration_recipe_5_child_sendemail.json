@@ -1,5 +1,5 @@
 {
-	"name": "pl_orchestration_recipe_5_child",
+	"name": "step6 pl_orchestration_recipe_5_child_sendemail",
 	"properties": {
 		"activities": [
 			{
@@ -62,7 +62,7 @@
 							},
 							"userProperties": [],
 							"typeProperties": {
-								"url": "https://prod-51.eastus.logic.azure.com:443/workflows/1638aebbbe4344cd8d9b06c4b794abf1/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=SGRM80lZP1qGW0LRA45JG5S7Aaj9t4iY7gVKU7vUrRU",
+								"url": "https://prod-12.eastus.logic.azure.com:443/workflows/b1c0d4a63a54495fa5ace0fb4af3d53e/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=8GphTazjxSugCGIYyl0ROXrt3krw5AvWzGzrAQndPJ8",
 								"method": "POST",
 								"body": {
 									"value": "@json(concat('{\"emailAddress\": \"',item().emailAddress,'\",\n\"subject\":\"ADF Pipeline Failure\", \"messageBody\":\"ADF Pipeline Failed\"}'))",

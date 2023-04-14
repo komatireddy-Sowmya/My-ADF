@@ -1,5 +1,5 @@
 {
-	"name": "pl_orchestration_recipe_2",
+	"name": "step3 pl_orchestration_recipe_2 insertMetadata",
 	"properties": {
 		"activities": [
 			{

@@ -1,5 +1,5 @@
 {
-	"name": "copyfromblobtosql",
+	"name": "step1 copyfromblobtosql",
 	"properties": {
 		"activities": [
 			{
