@@ -1,5 +1,5 @@
 {
-	"name": "pipelineorchestra4_failuremesg",
+	"name": "step7 pipelineorchestra4_failuremesg_parent_emailfailure",
 	"properties": {
 		"activities": [
 			{
@@ -62,7 +62,7 @@
 						"referenceName": "AzureSqlTables",
 						"type": "DatasetReference",
 						"parameters": {
-							"tablename": "country"
+							"tablename": "country123"
 						}
 					}
 				]
@@ -111,7 +111,10 @@
 						"referenceName": "AzureSqlTables",
 						"type": "DatasetReference",
 						"parameters": {
-							"tablename": "Country"
+							"tablename": {
+								"value": "Country",
+								"type": "Expression"
+							}
 						}
 					}
 				],
@@ -121,7 +124,7 @@
 						"type": "DatasetReference",
 						"parameters": {
 							"filename": {
-								"value": "@concat('Countries-', utcnow(), '.backup')",
+								"value": "@concat('countries-', utcNow(), '.backup')",
 								"type": "Expression"
 							}
 						}
@@ -183,8 +186,8 @@
 				}
 			},
 			{
-				"name": "on Failure",
-				"type": "SqlServerStoredProcedure",
+				"name": "Send Email On Failure",
+				"type": "ExecutePipeline",
 				"dependsOn": [
 					{
 						"activity": "copy from blob to azure sql",
@@ -193,47 +196,13 @@
 						]
 					}
 				],
-				"policy": {
-					"timeout": "0.12:00:00",
-					"retry": 0,
-					"retryIntervalInSeconds": 30,
-					"secureOutput": false,
-					"secureInput": false
-				},
 				"userProperties": [],
 				"typeProperties": {
-					"storedProcedureName": "[dbo].[InsertPipelineLog]",
-					"storedProcedureParameters": {
-						"PipelineID": {
-							"value": {
-								"value": "@pipeline().pipeline",
-								"type": "Expression"
-							},
-							"type": "String"
-						},
-						"RunID": {
-							"value": {
-								"value": "@pipeline().RunId",
-								"type": "Expression"
-							},
-							"type": "String"
-						},
-						"Status": {
-							"value": "Failure",
-							"type": "String"
-						},
-						"UpdatedAt": {
-							"value": {
-								"value": "@utcNow()",
-								"type": "Expression"
-							},
-							"type": "DateTime"
-						}
-					}
-				},
-				"linkedServiceName": {
-					"referenceName": "AzureSqlDatabase1",
-					"type": "LinkedServiceReference"
+					"pipeline": {
+						"referenceName": "step6 pl_orchestration_recipe_5_child_sendemail",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
 				}
 			}
 		],

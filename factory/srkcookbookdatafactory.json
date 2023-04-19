@@ -1,0 +1,9 @@
+{
+	"name": "srkcookbookdatafactory",
+	"location": "eastus",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "bfce2ac5-e7e9-4ffd-84f3-a719423597c1",
+		"tenantId": "84f1e4ea-8554-43e1-8709-f0b8589ea118"
+	}
+}

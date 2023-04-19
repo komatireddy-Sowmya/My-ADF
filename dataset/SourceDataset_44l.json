@@ -1,0 +1,37 @@
+{
+	"name": "SourceDataset_44l",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AnalyticsBlobStorage",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "planes.csv",
+				"container": "flightscontainer"
+			},
+			"columnDelimiter": ";",
+			"rowDelimiter": "\n",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "Name",
+				"type": "String"
+			},
+			{
+				"name": "IATA code",
+				"type": "String"
+			},
+			{
+				"name": "ICAO code\r",
+				"type": "String"
+			}
+		]
+	}
+}
