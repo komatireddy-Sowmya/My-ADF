@@ -1,0 +1,9 @@
+{
+	"name": "adfcookbookdatalake",
+	"location": "eastus",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "da1009a7-84c2-4f9b-b044-7eeed713c9cd",
+		"tenantId": "84f1e4ea-8554-43e1-8709-f0b8589ea118"
+	}
+}
